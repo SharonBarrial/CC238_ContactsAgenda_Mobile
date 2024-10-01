@@ -1,5 +1,6 @@
 package com.example.recyclerview
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -8,15 +9,21 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 
 class ContactAdapter(var contacts: ArrayList<Contact>) : Adapter<ContactPrototype>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactPrototype {
-        TODO("Not yet implemented")
+        //metodo que se encarga de "inflar" los datos del prototype
+        // mostrar
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.prototype_contact, parent, false)
+        return ContactPrototype(view)
     }
 
     override fun onBindViewHolder(holder: ContactPrototype, position: Int) {
-        
+        // vincula el contacto con el prototype
+        // bind the contact with the prototype
+        //holder.bind(contacts[position])
+        holder.bind(contacts.get(position))
     }
 
     override fun getItemCount(): Int {
-        //return the number of contacts
+        //return the number of contacts, devuelve el tamaño
         return contacts.size
     }
 
